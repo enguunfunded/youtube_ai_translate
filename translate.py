@@ -1,20 +1,16 @@
 # translate.py
 
-from googletrans import Translator
+from deep_translator import GoogleTranslator
 import os
 
 def translate_text(transcript_path):
-    translator = Translator()
-
     with open(transcript_path, "r", encoding="utf-8") as f:
         english_text = f.read()
 
-    print("🌐 Google Translate ашиглан орчуулж байна...")
-    result = translator.translate(english_text, src='en', dest='mn')
+    print("🌐 Deep Translator ашиглан монгол руу орчуулж байна...")
 
-    translated_text = result.text
+    translated_text = GoogleTranslator(source='en', target='mn').translate(english_text)
 
-    # Хадгалах
     translated_path = transcript_path.replace("_transcript.txt", "_translated.txt")
     with open(translated_path, "w", encoding="utf-8") as f:
         f.write(translated_text)
