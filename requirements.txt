@@ -5,3 +5,4 @@ gtts
 moviepy
 pydub
 torch
+sentencepiece
